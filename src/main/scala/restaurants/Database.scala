@@ -6,7 +6,7 @@ import scala.concurrent.duration.Duration
 
 /** Owns the MongoDB client and gives the application one shared collection. */
 object Database {
-  private val uri = sys.env.getOrElse("MONGO_URI", "mongodb+srv://aagamvshah0306_db_user:Aagam030206@cluster0.bb3adia.mongodb.net/?appName=Cluster0")
+  private val uri = sys.env.getOrElse("MONGO_URI", "mongodb://localhost:27017")
   private val client: MongoClient = MongoClient(uri)
 
   val restaurants: MongoCollection[Document] =

@@ -17,15 +17,16 @@ For Atlas, open the cluster's **Load Sample Dataset** action and load MongoDB's 
 
 ## Configure MongoDB
 
-The app reads the connection string from `MONGO_URI`. If it is unset, it connects to `mongodb://localhost:27017`.
+The app reads the connection string from the `MONGO_URI` environment variable. Set it in PowerShell before running the app. For a local MongoDB server, use `mongodb://localhost:27017`.
 
 PowerShell (current terminal only):
 
 ```powershell
 $env:MONGO_URI = "mongodb+srv://<user>:<password>@<cluster-host>/"
+scala-cli run .
 ```
 
-Replace the placeholders with your Atlas connection details. Do not put credentials in source files.
+Replace the placeholders with your Atlas connection details. Keep this URI in your PowerShell session and do not put credentials in source files. For local MongoDB, set `$env:MONGO_URI = "mongodb://localhost:27017"` instead.
 
 ## Run
 
@@ -48,3 +49,27 @@ On first run Scala CLI downloads the declared dependencies. The app creates the 
 7. Exit.
 
 The four startup indexes are `name`, `address.zipcode`, `restaurant_id`, and the compound `borough` + `cuisine` index. Both fields in the compound startup index are equality fields. Additional indexes can be created or dropped from the index menu.
+
+## Screenshots
+
+### CRUD operations
+
+| Create | Read | Update | Delete |
+| --- | --- | --- | --- |
+| ![Create restaurant](output/Create_png.png) | ![Read restaurants](output/Read_png.png) | ![Update restaurant](output/Update_png.png) | ![Delete restaurant](output/Delete_png.png) |
+
+### Analytics
+
+| Analytics example A | Analytics example B |
+| --- | --- |
+| ![Analytics example A](output/Analytics/a_png.png) | ![Analytics example B](output/Analytics/b_png.png) |
+
+| Analytics example C | Analytics example D |
+| --- | --- |
+| ![Analytics example C](output/Analytics/c_png.png) | ![Analytics example D](output/Analytics/d_png.png) |
+
+### Index management
+
+| Index list | Single-field index | Compound index |
+| --- | --- | --- |
+| ![List indexes](output/Index/List_png.png) | ![Single-field index](output/Index/single_index_png.png) | ![Compound index](output/Index/compound_index_png.png) |
